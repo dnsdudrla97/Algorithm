@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "factorial.h": "c",
+        "calc.h": "c",
+        "calcdata.h": "c",
+        "stdlib.h": "c",
+        "intstack.h": "c",
+        "stdio.h": "c",
+        "stackin.h": "c",
+        "recur_nr2.h": "c",
+        "nqueen.h": "c"
+    }
+}
