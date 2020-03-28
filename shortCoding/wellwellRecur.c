@@ -17,7 +17,7 @@ long fib(long nth)
     {
         SFV[nth] = SFV[nth - 1] + SFV[nth - 2];
     }
-    
+
     else
     {
         SFV[nth] = fib(nth - 1) + fib(nth - 2);
@@ -35,7 +35,7 @@ int main(void)
 
     for (i = 0; i < MAX_SIZE_OF_FIBONACCI; i++)
     {
-        printf("%ld", SFV[i]);
+        printf("%ld ", SFV[i]);
     }
     puts("\n");
 
