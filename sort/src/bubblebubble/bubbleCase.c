@@ -43,6 +43,7 @@ typedef struct checkTime
 //     }
 // }
 
+// /* -- Case.3 -- */
 // void bubble3(int* a, int n, T_PCHECK t)
 // {
 //     int j;
@@ -62,19 +63,62 @@ typedef struct checkTime
 //     }
 // }
 
-int bubble4(int* a, int n, T_PCHECK t)
+// /* -- Case.4 -- */
+// int bubble4(int* a, int n, T_PCHECK t)
+// {
+//     int left = 0;
+//     int right = n - 1;
+//     int last = right;
+    
+
+//     while (left < right) {
+//         t->Passtime++;
+
+//         for(int i = right; i > left; i--) {
+//             t->Changetime++;
+//             if (a[i - 1] > a[i]) {
+//                 swap(int, a[i - 1], a[i]);
+//                 last = i;
+//             }
+//         }
+//         left = last;
+
+//         for (int i = left; i < right; i++) {
+//             t->Changetime++;
+//             if (a[i + 1] < a[i]) {
+//                 swap(int, a[i + 1], a[i]);
+//                 last = i;
+//             }
+//         }
+//         right = last;
+//     }
+// }
+
+/* Selection */
+// void selection(int a[], int n, T_PCHECK t) {
+//     int min;
+//     for (int i = 0; i < n - 1; i++) {
+//         t->Passtime++;
+//         min = i;
+//         for (int j = i + 1; j < n; j++) {
+//             if (a[j] < a[min]) {
+//                 min = j;
+//                 t->Changetime++;
+//             }
+//         }
+//         swap(int, a[i], a[min]);
+//     }
+// }
+void swatch(int a[], int n)
 {
     int left = 0;
     int right = n - 1;
     int last = right;
-    
 
-    while (left < right) {
-        t->Passtime++;
-
-        for(int i = right; i > left; i--) {
-            t->Changetime++;
-            if (a[i - 1] > a[i]) {
+    while (left < right)
+    {
+        for (int i = right; i > left; i--) {
+            if (a[i - 1] < a[i]) {
                 swap(int, a[i - 1], a[i]);
                 last = i;
             }
@@ -82,8 +126,7 @@ int bubble4(int* a, int n, T_PCHECK t)
         left = last;
 
         for (int i = left; i < right; i++) {
-            t->Changetime++;
-            if (a[i + 1] < a[i]) {
+            if (a[i + 1] > a[i]) {
                 swap(int, a[i + 1], a[i]);
                 last = i;
             }
@@ -91,6 +134,7 @@ int bubble4(int* a, int n, T_PCHECK t)
         right = last;
     }
 }
+
 int main(void)
 {
 	int i, nx;
@@ -109,7 +153,8 @@ int main(void)
     // bubble1(x, nx, &t);
 	// bubble2(x, nx, &t);					
     // bubble3(x, nx, &t);
-    bubble4(x, nx, &t);
+    // selection(x, nx, &t);
+    swatch(x, nx);
     
 	puts("오름차순으로 정렬했습니다.");
 	for (i = 0; i < nx; i++)
