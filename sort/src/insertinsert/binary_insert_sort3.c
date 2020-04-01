@@ -23,11 +23,14 @@ int binaryInsertSort(int* a, int n)
         // printf("%d\n",pd);
         
         
-        for (j = i; j > pd; j--) {
-            int next = j - 1;
-            memmove(a + j, a + next, sizeof(int));
-            // a[j] = a[j - 1];
-        }
+        // for (j = i; j > pd; j--) {
+        //     int next = j - 1;
+        //     memmove(a + j, a + next, sizeof(int));
+        //     // a[j] = a[j - 1];
+        // }
+        printf("%d %d %d\n",a[pd + 1], a[pd], (i - pd));
+        memmove(&a[pd + 1], &a[pd], (i - pd) * sizeof(int));
+        
         a[pd] = key;
      
     }
