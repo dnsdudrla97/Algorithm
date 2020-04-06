@@ -10,6 +10,7 @@
         "recur_nr2.h": "c",
         "nqueen.h": "c",
         "instack.h": "c",
-        "nrecur.h": "c"
+        "nrecur.h": "c",
+        "quicknr.h": "c"
     }
 }
