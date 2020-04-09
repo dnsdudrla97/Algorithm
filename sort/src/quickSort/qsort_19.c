@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void sort_2dstr(char *p, int n1, int n2)
+void sort_2dstr(char (*p)[7], int n1, int n2)
 {
     qsort(p, n1, n2, (int (*)(const void *, const void *))strcmp);
 }
@@ -21,11 +21,12 @@ int main(void)
 {
     int i;
     puts("after sort");
+    // char a[][7] = {"LISP", "C", "Ada", "Pascal"};
     char a[][7] = {"LISP", "C", "Ada", "Pascal"};
     char *p[] = {"LISP", "C", "Ada", "Pasca"};
 
-    sort_2dstr(&a[0][0], 4, 7);
-
+    // sort_2dstr(&a[0][0], 4, 7);
+    sort_2dstr(&a[0], 4, 7);
     sort_pvstr(p, 4);
 
     puts("오름차순으로 정렬했습니다.");
@@ -35,8 +36,6 @@ int main(void)
 
     for (i = 0; i < 4; i++)
         printf("p[%d] = %s\n", i, p[i]);
-
-    return 0;
 
     return (0);
 }
