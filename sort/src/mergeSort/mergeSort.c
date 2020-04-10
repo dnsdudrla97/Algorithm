@@ -12,19 +12,19 @@ void __mergesort(int* a, int left, int right)
         int i;
         int center = (left + right) / 2;
         int bufCurPoint = 0;
-        int confPoint = 0;
+        int bufConfPoint = 0;
         int mergePoint = left;
         __mergesort(a, left, center);      /*앞부분 병합 정렬*/
         __mergesort(a, center + 1, right); /*뒷부분 병합 정렬*/
         for (i = left; i <= center; i++) {
             buf[bufCurPoint++] = a[i];
         }
-        while ( i <= right && confPoint < bufCurPoint) {
-            a[mergePoint++] = (buf[confPoint] < a[i]) ? buf[confPoint++] : a[i++];
+        while ( i <= right && bufConfPoint < bufCurPoint) {
+            a[mergePoint++] = (buf[bufConfPoint] < a[i]) ? buf[bufConfPoint++] : a[i++];
         }
 
-        while (confPoint < bufCurPoint) {
-            a[mergePoint++] = buf[confPoint++];
+        while (bufConfPoint < bufCurPoint) {
+            a[mergePoint++] = buf[bufConfPoint++];
         }
 
     }
