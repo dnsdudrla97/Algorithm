@@ -10,7 +10,7 @@ void fsort (int a[], int n, int max)
     int* b = calloc(n, sizeof(int));            /*작업 도수*/
 
     for (i = 0; i <=max; i++) f[i] = 0;         /* step 0 */ 
-    for (i = 0; i < n; i++) f[a[i]]++;          /* step 1 */
+    for (i = 0; i < n; i++) f[a[i]]++;           /* step 1 */
     for (i = 0; i <=max; i++) f[i] += f[i - 1]; /* step 2 */
     for (i = n - 1; i >=0; i--) b[--f[a[i]]] = a[i];
     for (i = 0; i < n; i++) a[i] = b[i];

@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.rmd": "markdown",
         "factorial.h": "c",
         "calc.h": "c",
         "calcdata.h": "c",
@@ -11,6 +12,8 @@
         "nqueen.h": "c",
         "instack.h": "c",
         "nrecur.h": "c",
-        "quicknr.h": "c"
+        "quicknr.h": "c",
+        "intset.h": "c",
+        "test.h": "c"
     }
 }
