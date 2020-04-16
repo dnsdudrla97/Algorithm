@@ -32,6 +32,7 @@ int _search(const SortedIntSet *s, int n, int *flag)
         if (s->set[pc] == n)
         {
             *flag = 0;
+            // while (pc > pl && s->set[pc - 1] == n) pc--;
             return pc;
         }
         else if (s->set[pc] < n)
