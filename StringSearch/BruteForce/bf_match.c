@@ -39,7 +39,7 @@ int main(void)
     if (idx == -1)
         puts("text in pattern not");
     else
-        printf("index : %d match\n", idx+1);
+        printf("index : %d match\n", idx + 1);
 
     return 0;
 }
