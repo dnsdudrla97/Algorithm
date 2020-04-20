@@ -12,12 +12,14 @@ int bf_matchr(const char plainText[], const char pattern[])
         {
             pt++;
             pp++;
-        } else {
+        }
+        else
+        {
             pt = pt - pp + 1;
             pp = 0;
-        
         }
-        if (pattern[pp] == '\0') {
+        if (pattern[pp] == '\0')
+        {
             tmp = pt - pp;
             pp = 0;
         }
