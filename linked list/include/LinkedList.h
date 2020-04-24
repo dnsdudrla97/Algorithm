@@ -4,6 +4,7 @@
 
 #include "Member.h"
 
+
 /* NODE */
 typedef struct __node
 {
