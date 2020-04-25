@@ -118,6 +118,32 @@ void RemoveCurrent(List *list)
     }
 }
 
+/*Purge 서로 같은 노드를 가장 앞쪽의 노드를 남기고 삭제*/
+void Purge(List *list, int comapre(const Member *x, const Member *y))
+{
+    Node *ptr = list->head;
+
+    while (ptr != NULL)
+    {
+        Node *ptr2 = ptr;
+        Node *pre = ptr;
+        while (pre->next != NULL)
+        {
+            ptr2 = pre->next;
+            if (!comapre(&ptr->data, &ptr2->data))
+            {
+                pre->next = ptr2->next;
+                free(ptr2);
+            }
+            else {
+                pre = ptr2;
+            }
+        }
+        ptr = ptr->next;
+    }
+    list->crnt = ptr;
+}
+
 /*모든 노드 삭제*/
 void Clear(List *list)
 {
@@ -157,6 +183,31 @@ void Print(const List *list)
             ptr = ptr->next; /*다음 노드 선택*/
         }
     }
+}
+/*Retrieve : n 번째 위치한 데이터 값*/
+Node *Retrieve(List *list, int n)
+{
+    int count = 0;
+    Node *ptr = list->head;
+    if (ptr != NULL)
+    {
+        if (n < 0)
+            return NULL;
+        else
+        {
+            while (ptr->next != NULL)
+            {
+                if (count == n)
+                    return ptr;
+                else if (count >= n)
+                    return NULL;
+                count++;
+                ptr = ptr->next;
+            }
+            list->crnt = ptr;
+        }
+    }
+    return ptr;
 }
 
 /*연결 리스트 종료*/

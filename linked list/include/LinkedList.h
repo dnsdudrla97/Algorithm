@@ -40,6 +40,12 @@ void RemoveRear(List *list);
 /*선택한 노드를 삭제*/
 void RemoveCurrent(List *list);
 
+/*Purge*/
+void Purge(List *list, int comapre(const Member *x, const Member *y));
+
+/*Retrieve*/
+Node *Retrieve(List *list, int n);
+
 /*모든 노드를 삭제*/
 void Clear(List *list);
 

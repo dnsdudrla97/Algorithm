@@ -15,7 +15,9 @@ typedef enum
     SRCH_NO,
     SRCH_NAME,
     PRINT_ALL,
-    CLEAR
+    CLEAR,
+    PURGE,
+    RETRIEVE,
 } Menu;
 
 /*Menu select*/
@@ -33,18 +35,20 @@ Menu SelectMenu(void)
         "이름으로 검색",
         "모든 노드를 출력",
         "모든 노드를 삭제",
+        "Purge",
+        "Retrieve",
     };
     do
     {
-        for (i = TERMINATE; i < CLEAR; i++)
+        for (i = TERMINATE; i < RETRIEVE; i++) 
         {
-            printf("(%2d) %-30s ", i + 1, mstring[i]);
+            printf("(%2d) %-40s ", i + 1, mstring[i]);
             if ((i % 3) == 2)
                 putchar('\n');
         }
         printf("(0) 종료 : ");
         scanf("%d", &ch);
-    } while (ch < TERMINATE || ch > CLEAR);
+    } while (ch < TERMINATE || ch > RETRIEVE);
     return (Menu)ch;
 }
 
@@ -58,6 +62,7 @@ int main(void)
     do
     {
         Member x;
+        int research;
 
         switch (menu = SelectMenu())
         {
@@ -121,6 +126,17 @@ int main(void)
         case CLEAR:
             Clear(&list);
             break;
+        
+        /*Purge*/
+        case PURGE:
+            Purge(&list,MemberNoCmp);
+            break;
+        /*Retrieve*/
+        case RETRIEVE:
+            printf("[몇번째 노드의 데이터 값 : ");
+            scanf("%d", &research);
+            if (Retrieve(&list, research) != NULL)
+                PrintLnCurrent(&list);
         default:
             break;
         }
