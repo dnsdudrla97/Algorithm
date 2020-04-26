@@ -61,4 +61,9 @@ void Print(const List *list);
 
 /*end*/
 void Terminate(List *list);
+
+/*------- Test func --------*/
+void Purge(List *list, int (*compare)(const Member *x, const Member *y));
+
+Index Retrieve(List *list, int n);
 #endif

@@ -16,6 +16,8 @@ typedef enum
     SRCH_NAME,
     PRINT_ALL,
     CLEAR,
+    PURGE,
+    RETRIEVE,
 } Menu;
 
 /*Menu select*/
@@ -33,10 +35,12 @@ Menu SelectMenu(void)
         "이름으로 검색",
         "모든 노드를 출력",
         "모든 노드를 삭제",
+        "노드를 퍼지 할꺼",
+        "노드를 n번째 검색",
     };
     do
     {
-        for (i = TERMINATE; i < CLEAR; i++) 
+        for (i = TERMINATE; i < RETRIEVE; i++) 
         {
             printf("(%2d) %-25s ", i + 1, mstring[i]);
             if ((i % 3) == 2)
@@ -44,7 +48,7 @@ Menu SelectMenu(void)
         }
         printf("(0) 종료 : ");
         scanf("%d", &ch);
-    } while (ch < TERMINATE || ch > CLEAR);
+    } while (ch < TERMINATE || ch > RETRIEVE);
     return (Menu)ch;
 }
 
@@ -58,7 +62,7 @@ int main(void)
     do
     {
         Member x;
-        
+        Index n;
         switch (menu = SelectMenu())
         {
         /*머리에 노드를 삽입*/
@@ -121,9 +125,22 @@ int main(void)
         case CLEAR:
             Clear(&list);
             break;
+        /*Test section :D*/
+        case PURGE:
+            Purge(&list,MemberNoCmp);
+            break;
+        
+        case RETRIEVE:
+            printf("몇번째에 뭐가 있을까?");
+            scanf("%d", &n);
+            if (Retrieve(&list, n) != Null)
+                PrintLnCurrent(&list);
+            else printf("Not Index\n");
+
         default:
             break;
         }
+        
     } while (menu != TERMINATE);
     Terminate(&list); /*연결리스트 종료*/
 
