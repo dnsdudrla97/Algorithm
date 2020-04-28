@@ -15,6 +15,8 @@
         "quicknr.h": "c",
         "intset.h": "c",
         "test.h": "c",
-        "bitset.h": "c"
+        "bitset.h": "c",
+        "circdbllinkedlist.h": "c",
+        "member.h": "c"
     }
 }
