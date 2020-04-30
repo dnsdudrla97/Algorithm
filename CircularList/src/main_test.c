@@ -5,7 +5,8 @@
 /*--- 메뉴 ---*/
 typedef enum {
 	TERMINATE, INS_FRONT, INS_REAR, RMV_FRONT, RMV_REAR, PRINT_CRNT,
-	RMV_CRNT, SRCH_NO, SRCH_NAME, PRINT_ALL, NEXT, PREV, CLEAR
+	RMV_CRNT, SRCH_NO, SRCH_NAME, PRINT_ALL, NEXT, PREV, CLEAR, PURGE,
+	RETRIEVE, CLS,
 } Menu;
 
 /*--- 메뉴 선택 ---*/
@@ -17,17 +18,18 @@ Menu SelectMenu(void)
 		"꼬리 노드를 삭제",        "선택한 노드를 출력",     "선택한 노드를 삭제",
 		"번호로 검색",             "이름으로 검색",          "모든 노드를 출력",
 		"선택한 노드를 뒤쪽으로",  "선택한 노드를 앞쪽으로", "모든 노드를 삭제",
+		"Purge Purge Purge :D:",  "Retrieve Retrieve eeee",	"화면 지우기",
 	};
 	
 	do {
-		for (i = TERMINATE; i < CLEAR; i++) {
+		for (i = TERMINATE; i < CLS; i++) {
 			printf("(%2d) %-32.32s ", i + 1, mstring[i]);
 			if ((i % 3) == 2)
 				putchar('\n');
 		}
 		printf("(0) 종료 : ");
 		scanf("%d", &ch);
-	} while (ch < TERMINATE || ch > CLEAR);
+	} while (ch < TERMINATE || ch > CLS);
 
 	return (Menu)ch;
 }
@@ -40,6 +42,7 @@ int main(void)
 	Init(&list);		/* 원형 이중 연결 리스트를 초기화 */
 	do {
 		Member x;
+		int n;
 		switch (menu = SelectMenu()) {
 		
 		/* 머리에 노드를 삽입 */
@@ -111,6 +114,22 @@ int main(void)
 		case CLEAR:
 			Clear(&list);
 			break;
+
+		case PURGE:
+			Purge(&list,MemberNoCmp);
+			PrintLnCurrent(&list);
+			break;
+		
+		case RETRIEVE:
+			puts("numberic : ");
+			scanf("%d", &n);
+			if (Retrieve(&list, n) != NULL)
+				PrintLnCurrent(&list);
+			break;
+		case CLS:
+			printf("\e[1;1H\e[2J");
+			break;
+
         default:
             break;
 		}

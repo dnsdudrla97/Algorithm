@@ -67,4 +67,9 @@ void Clear(Dlist *list);
 
 /*원형 이중 연결 리스트 종료*/
 void Terminate(Dlist *list);
+
+/*RRRRR*/
+void Purge(Dlist *list, int (*comapre)(const Member *x, const Member *y));
+
+Dnode *Retrieve(Dlist *list, int n);
 #endif

@@ -182,3 +182,35 @@ void Terminate(Dlist *list)
     Clear(list);      /*모든 노드를 삭제*/
     free(list->head); /*더미 노드를 삭제*/
 }
+
+void Purge(Dlist *list, int (*comapre)(const Member *x, const Member *y))
+{
+    Dnode *sptr = list->head->next;
+    Dnode *ptr = list->head->next;
+
+    while (sptr != list->head)
+    {
+        while (ptr != list->head)
+        {
+            if (comapre(&sptr->data, &ptr->data) == 0)
+                Remove(list, ptr);       
+            ptr = ptr->next;
+        }
+        sptr = sptr->next;
+    }
+}
+
+Dnode *Retrieve(Dlist *list, int n)
+{
+    Dnode *ptr = list->head->next;
+    if (IsEmpty(list))
+        return NULL;
+    else {
+        while (n) {
+            ptr = ptr->next;
+            n--;
+        }
+        list->crnt = ptr;
+        return ptr;
+    }
+}
