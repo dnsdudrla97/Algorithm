@@ -25,4 +25,12 @@ void PrintTree(const BinNode *p);
 
 /*--- 모든 노드 삭제 ---*/
 void FreeTree(BinNode *p);
+
+/*test*/
+void DecressTree(BinNode *p);
+
+BinNode *GetMinNode(const BinNode *p);
+
+BinNode *GetMaxNode(const BinNode *p);
+
 #endif

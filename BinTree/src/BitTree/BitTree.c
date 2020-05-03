@@ -113,3 +113,28 @@ void FreeTree(BinNode *p)
         free(p);
     }
 }
+
+/*내림 차순 정렬*/
+void DecressTree(BinNode *p)
+{
+    if (p != NULL)
+    {
+        DecressTree(p->right);
+        PrintLnMember(&p->data);
+        DecressTree(p->left);
+    }
+}
+
+BinNode *GetMinNode(const BinNode *p)
+{
+    if (p->left != NULL)
+        GetMinNode(p->left);
+    return (BinNode *)p;
+}
+
+BinNode *GetMaxNode(const BinNode *p)
+{
+    if (p->right != NULL)
+        GetMaxNode(p->right);   
+    return (BinNode *)p;
+}

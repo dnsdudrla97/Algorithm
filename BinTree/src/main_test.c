@@ -9,7 +9,10 @@ typedef enum
     ADD,
     REMOVE,
     SEARCH,
-    PRINT
+    PRINT,
+    DPRNT,
+    MIN,
+    MAX,
 } Menu;
 
 /*--- 메뉴 선택 ---*/
@@ -18,9 +21,9 @@ Menu SelectMenu(void)
     int ch;
     do
     {
-        printf("(1) 삽입 (2) 삭제 (3) 검색 (4) 출력 (0) 종료 : ");
+        printf("(1) 삽입 (2) 삭제 (3) 검색 (4) 출력 (5) 내출 (6) 최소 (7) 최대 (0) 종료 : ");
         scanf("%d", &ch);
-    } while (ch < TERMINATE || ch > PRINT);
+    } while (ch < TERMINATE || ch > MAX);
     return (Menu)ch;
 }
 
@@ -59,6 +62,25 @@ int main(void)
         case PRINT:
             puts("【 모든 노드 출력 】");
             PrintTree(root);
+            break;
+
+        case DPRNT:
+            puts("【 내출 노드 출력 】");
+            DecressTree(root);
+            break;
+        
+        case MIN:
+            puts("【 최소 노드 】");
+            temp = GetMinNode(root);
+            if ( temp != NULL)
+                PrintLnMember(&temp->data);
+            break;
+
+        case MAX:
+            puts("【 최대 노드 】");
+            temp = GetMaxNode(root);
+            if (temp != NULL)
+                PrintLnMember(&temp->data);
             break;
         default:
             break;
