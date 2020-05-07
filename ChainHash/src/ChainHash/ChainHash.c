@@ -6,14 +6,15 @@
 /*해시 함수(key의 해시 값을 반환)*/
 static int hash(int key, int size)
 {
+    // return key % size;
     return key % size;
 }
 
 /*노드의 각 멤버에 값을 설정*/
 static void SetNode(Node *n, const Member *x, const Node *next)
 {
-    n->data = *x;
-    n->next = next;
+    n->data = (Member)*x;
+    n->next = (Node *)next;
 }
 
 /*해시 테이블 초기화*/

@@ -17,7 +17,7 @@ int MemberNameCmp(const Member *x, const Member *y)
 /*회원 데이터를 출력(줄 바꿈 없음)*/
 void PrintMember(const Member *x)
 {
-    print("%d %s", x->no, x->name);
+    printf("%d %s", x->no, x->name);
 }
 
 /*회원 데이터를 출력(줄 바꿈 있음)*/
